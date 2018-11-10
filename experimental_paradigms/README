@@ -1,1 +1,3 @@
-In-scanner and out-of-scanner (effort discounting and risk discounting) tasks
+In-scanner and out-of-scanner (effort discounting and risk discounting) tasks.
+"pilot_effort.dat" and "pilot_probability.dat" contain the options presented to each of the out-of-scanner tasks
+All options presented in the in-scanner task are in the folder "task_pairs_in_scanner_task"
