@@ -1,0 +1,44 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  ...correlation_H_RT.log
+  log type:  text
+ opened on:   7 Nov 2018, 17:01:34
+
+. use "[HIDDEN PATH]\dataset_mixed_model_RT.dta", clear
+
+. swilk H RT
+
+                   Shapiro-Wilk W test for normal data
+
+    Variable |    Obs       W           V         z       Prob>z
+-------------+--------------------------------------------------
+           H |    480    0.94977     16.289     6.695    0.00000
+          RT |    480    0.98906      3.548     3.039    0.00119
+
+. pwcorr H RT, obs sig
+
+             |        H       RT
+-------------+------------------
+           H |   1.0000 
+             |
+             |      480
+             |
+          RT |   0.2629   1.0000 
+             |   0.0000
+             |      480      480
+             |
+
+. spearman H RT, stats(rho obs p)
+
+ Number of obs =     480
+Spearman's rho =       0.2314
+
+Test of Ho: H and RT are independent
+    Prob > |t| =       0.0000
+
+. log close
+      name:  <unnamed>
+       log:  ...correlation_H_RT.log
+  log type:  text
+ closed on:   7 Nov 2018, 17:02:17
+---------------------------------------------------------------------------------------------------------------------------------

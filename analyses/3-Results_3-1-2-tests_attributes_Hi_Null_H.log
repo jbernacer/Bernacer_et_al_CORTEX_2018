@@ -1,0 +1,197 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  ...tests_attributes_Hi_Null_H.log
+  log type:  text
+ opened on:   7 Nov 2018, 16:19:13
+
+. use "[HIDDEN PATH]dataset_attributes_H.dta", clear
+
+. swilk diff_effort
+
+                   Shapiro-Wilk W test for normal data
+
+    Variable |    Obs       W           V         z       Prob>z
+-------------+--------------------------------------------------
+ diff_effort |    250    0.96988      5.463     3.950    0.00004
+
+. swilk diff_prob
+
+                   Shapiro-Wilk W test for normal data
+
+    Variable |    Obs       W           V         z       Prob>z
+-------------+--------------------------------------------------
+   diff_prob |    250    0.97783      4.020     3.237    0.00060
+
+. swilk diff_SV
+
+                   Shapiro-Wilk W test for normal data
+
+    Variable |    Obs       W           V         z       Prob>z
+-------------+--------------------------------------------------
+     diff_SV |    250    0.86523     24.442     7.437    0.00000
+
+. ranksum diff_SV , by(inconsistency)
+
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+inconsiste~y |      obs    rank sum    expected
+-------------+---------------------------------
+        Null |      201       26894     25225.5
+High (>0.90) |       49        4481      6149.5
+-------------+---------------------------------
+    combined |      250       31375       31375
+
+unadjusted variance   206008.25
+adjustment for ties      -26.50
+                     ----------
+adjusted variance     205981.75
+
+Ho: diff_SV(incons~y==Null) = diff_SV(incons~y==High (>0.90))
+             z =   3.676
+    Prob > |z| =   0.0002
+
+. ranksum diff_prob , by(inconsistency)
+
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+inconsiste~y |      obs    rank sum    expected
+-------------+---------------------------------
+        Null |      201       27199     25225.5
+High (>0.90) |       49        4176      6149.5
+-------------+---------------------------------
+    combined |      250       31375       31375
+
+unadjusted variance   206008.25
+adjustment for ties   -25951.05
+                     ----------
+adjusted variance     180057.20
+
+Ho: diff_p~b(incons~y==Null) = diff_p~b(incons~y==High (>0.90))
+             z =   4.651
+    Prob > |z| =   0.0000
+
+. ranksum diff_effort , by(inconsistency)
+
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+inconsiste~y |      obs    rank sum    expected
+-------------+---------------------------------
+        Null |      201     23924.5     25225.5
+High (>0.90) |       49      7450.5      6149.5
+-------------+---------------------------------
+    combined |      250       31375       31375
+
+unadjusted variance   206008.25
+adjustment for ties   -30143.71
+                     ----------
+adjusted variance     175864.54
+
+Ho: diff_e~t(incons~y==Null) = diff_e~t(incons~y==High (>0.90))
+             z =  -3.102
+    Prob > |z| =   0.0019
+
+. by inconsistency, sort : summarize diff_effort diff_prob diff_SV, detail
+
+---------------------------------------------------------------------------------------------------------------------------------
+-> inconsistency = Null
+
+                         diff_effort
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            5              5
+ 5%            5              5
+10%            5              5       Obs                 201
+25%            5              5       Sum of Wgt.         201
+
+50%           10                      Mean           8.308458
+                        Largest       Std. Dev.      3.622758
+75%           10             15
+90%           15             15       Variance       13.12438
+95%           15             15       Skewness       .6897938
+99%           15             20       Kurtosis       2.481517
+
+                          diff_prob
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           10             10
+ 5%           10             10
+10%           10             10       Obs                 201
+25%           10             10       Sum of Wgt.         201
+
+50%           20                      Mean           19.75124
+                        Largest       Std. Dev.      8.685494
+75%           30             40
+90%           30             40       Variance       75.43781
+95%           40             40       Skewness        .552818
+99%           40             40       Kurtosis       2.557417
+
+                           diff_SV
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .01              0
+ 5%          .06            .01
+10%          .14            .01       Obs                 201
+25%          .28            .02       Sum of Wgt.         201
+
+50%          .66                      Mean           .7917413
+                        Largest       Std. Dev.      .6560392
+75%         1.13           2.33
+90%         1.72           2.64       Variance       .4303874
+95%         2.06           3.11       Skewness       1.282392
+99%         2.64           3.85       Kurtosis       5.090657
+
+---------------------------------------------------------------------------------------------------------------------------------
+-> inconsistency = High (>0.90)
+
+                         diff_effort
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            5              5
+ 5%            5              5
+10%            5              5       Obs                  49
+25%            5              5       Sum of Wgt.          49
+
+50%           10                      Mean           10.71429
+                        Largest       Std. Dev.             5
+75%           15             20
+90%           20             20       Variance             25
+95%           20             20       Skewness       .4690971
+99%           20             20       Kurtosis       2.177083
+
+                          diff_prob
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           10             10
+ 5%           10             10
+10%           10             10       Obs                  49
+25%           10             10       Sum of Wgt.          49
+
+50%           10                      Mean           13.67347
+                        Largest       Std. Dev.      6.018678
+75%           20             20
+90%           20             30       Variance       36.22449
+95%           30             30       Skewness       1.391126
+99%           30             30       Kurtosis       3.866577
+
+                           diff_SV
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%          .01            .01
+ 5%          .01            .01
+10%          .03            .01       Obs                  49
+25%          .12            .02       Sum of Wgt.          49
+
+50%          .34                      Mean           .5036735
+                        Largest       Std. Dev.      .6416538
+75%          .58           1.36
+90%         1.35           1.88       Variance       .4117195
+95%         1.88           2.11       Skewness       2.732684
+99%         3.51           3.51       Kurtosis       11.80263
+
+
+. log close
+      name:  <unnamed>
+       log:  ...tests_attributes_Hi_Null_H.log
+  log type:  text
+ closed on:   7 Nov 2018, 16:20:55
+---------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,73 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  ...mixed_model_attributes_H.log
+  log type:  text
+ opened on:   7 Nov 2018, 16:23:16
+
+. use "[HIDDEN PATH]\dataset_mixed_model_RT.dta", clear
+
+. xtmixed H diff_effort diff_prob diff_SV ||id: diff_effort diff_prob diff_SV
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -152.18382  
+Iteration 1:   log likelihood = -151.25188  
+Iteration 2:   log likelihood = -150.47375  
+Iteration 3:   log likelihood = -150.41472  
+Iteration 4:   log likelihood =  -150.4146  
+Iteration 5:   log likelihood =  -150.4146  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs      =       480
+Group variable: id                              Number of groups   =        24
+
+                                                Obs per group: min =        20
+                                                               avg =      20.0
+                                                               max =        20
+
+
+                                                Wald chi2(3)       =     59.83
+Log likelihood =  -150.4146                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+           H |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ diff_effort |   .0094304   .0032672     2.89   0.004     .0030267     .015834
+   diff_prob |  -.0046587   .0017658    -2.64   0.008    -.0081196   -.0011978
+     diff_SV |  -.0729533   .0130015    -5.61   0.000    -.0984357   -.0474708
+       _cons |   .3190803   .0403288     7.91   0.000     .2400373    .3981233
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+id: Independent              |
+                sd(diff_e~t) |   .0049431          .             .           .
+                sd(diff_p~b) |   2.73e-13          .             .           .
+                 sd(diff_SV) |   2.31e-13          .             .           .
+                   sd(_cons) |   .0509592          .             .           .
+-----------------------------+------------------------------------------------
+                sd(Residual) |   .3251613          .             .           .
+------------------------------------------------------------------------------
+LR test vs. linear regression:       chi2(4) =     5.29   Prob > chi2 = 0.2586
+
+Note: LR test is conservative and provided only for reference.
+
+. estat ic
+
+-----------------------------------------------------------------------------
+       Model |    Obs    ll(null)   ll(model)     df          AIC         BIC
+-------------+---------------------------------------------------------------
+           . |    480           .   -150.4146      4     308.8292    325.5243
+-----------------------------------------------------------------------------
+               Note:  N=Obs used in calculating BIC; see [R] BIC note
+
+. log close
+      name:  <unnamed>
+       log:  ...mixed_model_attributes_H.log
+  log type:  text
+ closed on:   7 Nov 2018, 16:24:29
+---------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,75 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  ...best_model_logistic_regression.log
+  log type:  text
+ opened on:   7 Nov 2018, 12:54:34
+
+. use "[HIDDEN PATH]\dataset_logistic_regression.dta", clear
+
+. matrix a=(0,0,0,0,0,0)
+
+. xtmelogit choice diff_SV diff_prob || id: diff_SV diff_prob , from(a,copy)
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -1357.4895  (not concave)
+Iteration 1:   log likelihood = -1323.4055  (not concave)
+Iteration 2:   log likelihood = -1309.0839  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -1309.0839  (not concave)
+Iteration 1:   log likelihood = -1303.7628  (not concave)
+Iteration 2:   log likelihood = -1263.2928  (not concave)
+Iteration 3:   log likelihood = -1238.5403  
+Iteration 4:   log likelihood = -1225.6507  
+Iteration 5:   log likelihood = -1212.1727  
+Iteration 6:   log likelihood = -1210.8994  
+Iteration 7:   log likelihood = -1210.8648  
+Iteration 8:   log likelihood = -1210.8647  
+
+Mixed-effects logistic regression               Number of obs      =      4259
+Group variable: id                              Number of groups   =        24
+
+                                                Obs per group: min =       170
+                                                               avg =     177.5
+                                                               max =       180
+
+Integration points =   7                        Wald chi2(2)       =     43.24
+Log likelihood = -1210.8647                     Prob > chi2        =    0.0000
+
+------------------------------------------------------------------------------
+      choice |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     diff_SV |   3.558536   .5497571     6.47   0.000     2.481032     4.63604
+   diff_prob |     .02801   .0298275     0.94   0.348    -.0304508    .0864708
+       _cons |  -.1561924   .0666792    -2.34   0.019    -.2868812   -.0255036
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+id: Independent              |
+                 sd(diff_SV) |   2.491942   .5180269      1.658019    3.745298
+                sd(diff_p~b) |   .1420163   .0237302      .1023544    .1970469
+                   sd(_cons) |   .1781718   .0788246      .0748619    .4240499
+------------------------------------------------------------------------------
+LR test vs. logistic regression:     chi2(3) =  1288.81   Prob > chi2 = 0.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. estat ic
+
+-----------------------------------------------------------------------------
+       Model |    Obs    ll(null)   ll(model)     df          AIC         BIC
+-------------+---------------------------------------------------------------
+           . |   4259           .   -1210.865      6     2433.729     2471.87
+-----------------------------------------------------------------------------
+               Note:  N=Obs used in calculating BIC; see [R] BIC note
+
+. log close
+      name:  <unnamed>
+       log:  ...best_model_logistic_regression.log
+  log type:  text
+ closed on:   7 Nov 2018, 12:57:49
+---------------------------------------------------------------------------------------------------------------------------------

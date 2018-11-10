@@ -1,0 +1,65 @@
+---------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  ...logistic_regression_high_H.log
+  log type:  text
+ opened on:   7 Nov 2018, 15:10:56
+
+. use "[HIDDEN PATH]\data sharing\dataset_logistic_regression.dta", clear
+
+. xtmelogit choice diff_SV diff_prob if H_dichotomized==1, || id: diff_SV diff_prob, covariance(independent)
+
+Refining starting values: 
+
+Iteration 0:   log likelihood = -373.50123  (not concave)
+Iteration 1:   log likelihood = -363.66376  (not concave)
+Iteration 2:   log likelihood = -359.69286  
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -359.69286  (not concave)
+Iteration 1:   log likelihood = -330.36991  (not concave)
+Iteration 2:   log likelihood = -305.87085  (not concave)
+Iteration 3:   log likelihood = -296.98742  
+Iteration 4:   log likelihood = -296.17122  
+Iteration 5:   log likelihood = -295.68903  
+Iteration 6:   log likelihood = -293.57411  
+Iteration 7:   log likelihood = -293.20529  
+Iteration 8:   log likelihood = -293.19941  
+Iteration 9:   log likelihood = -293.19941  
+
+Mixed-effects logistic regression               Number of obs      =       429
+Group variable: id                              Number of groups   =        22
+
+                                                Obs per group: min =         9
+                                                               avg =      19.5
+                                                               max =        36
+
+Integration points =   7                        Wald chi2(2)       =      3.05
+Log likelihood = -293.19941                     Prob > chi2        =    0.2171
+
+------------------------------------------------------------------------------
+      choice |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     diff_SV |   .2233388   .1322475     1.69   0.091    -.0358617    .4825392
+   diff_prob |   .0003827   .0068605     0.06   0.956    -.0130637    .0138291
+       _cons |  -.2158065   .0976687    -2.21   0.027    -.4072336   -.0243793
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects Parameters  |   Estimate   Std. Err.     [95% Conf. Interval]
+-----------------------------+------------------------------------------------
+id: Independent              |
+                 sd(diff_SV) |   1.30e-08    .166364             0           .
+                sd(diff_p~b) |   3.33e-10   .0087065             0           .
+                   sd(_cons) |   3.59e-08   .4760166             0           .
+------------------------------------------------------------------------------
+LR test vs. logistic regression:     chi2(3) =     0.00   Prob > chi2 = 1.0000
+
+Note: LR test is conservative and provided only for reference.
+
+. log close
+      name:  <unnamed>
+       log:  ...logistic_regression_high_H.log
+  log type:  text
+ closed on:   7 Nov 2018, 15:11:54
+---------------------------------------------------------------------------------------------------------------------------------
